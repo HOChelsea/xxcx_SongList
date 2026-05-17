@@ -140,7 +140,7 @@
     { "id": 138, "songName": "爱如火", "singer": "那艺娜", "tags": ["流行", "网络"] },
     { "id": 139, "songName": "白垩纪", "singer": "徐秉龙", "tags": ["流行"] },
     { "id": 140, "songName": "避难所", "singer": "周深", "tags": ["流行", "治愈"] },
-    { "id": 141, "songName": "伯虎说", "singer": "唐伯虎Annie", "tags": ["古风"] },
+    { "id": 141, "songName": "伯虎说", "singer": ["伯爵Johnny", "唐伯虎Annie"], "tags": ["古风"] },
     { "id": 142, "songName": "不再见", "singer": "陈学冬", "tags": ["流行", "伤感"] },
     { "id": 143, "songName": "敕勒歌", "singer": "谭维维", "tags": ["古风", "民族"] },
     { "id": 144, "songName": "丑八怪", "singer": "薛之谦", "tags": ["流行", "伤感"] },
@@ -280,7 +280,7 @@
     { "id": 278, "songName": "感官先生", "singer": "刘凤瑶", "tags": ["流行"] },
     { "id": 279, "songName": "告白气球", "singer": "周杰伦", "tags": ["流行", "经典"] },
     { "id": 280, "songName": "高贵与丑", "singer": "崔健", "tags": ["摇滚"] },
-    { "id": 281, "songName": "公主殿下", "singer": "音阙诗听", "tags": ["古风"] },
+    { "id": 281, "songName": "公主殿下", "singer": "崔洋", "tags": ["流行", "小甜歌"] },
     { "id": 282, "songName": "光年之外", "singer": "邓紫棋", "tags": ["流行"] },
     { "id": 283, "songName": "爱就爱了", "singer": "陈琳", "tags": ["流行"] },
     { "id": 284, "songName": "那年年少", "singer": "夏婉安", "tags": ["流行"] },
@@ -300,6 +300,12 @@
     { "id": 298, "songName": "就忘了吧", "singer": "1K", "tags": ["流行"] },
     { "id": 299, "songName": "君临天下", "singer": ["特曼", "李常超"], "tags": ["古风"] },
     { "id": 300, "songName": "开不了口", "singer": "周杰伦", "tags": ["流行", "经典"] },
-    { "id": 301, "songName": "可爱女人", "singer": "周杰伦", "tags": ["流行", "经典"] }
+    { "id": 301, "songName": "可爱女人", "singer": "周杰伦", "tags": ["流行", "经典"] },
+    { "id": 302, "songName": "荒漠上行走", "singer": "亚森", "tags": ["流行", "摇滚", "民谣"]},
+    { "id": 303, "songName": "坠落", "singer": "蔡健雅", "tags": ["流行", "伤感"]},
+    { "id": 304, "songName": "几分之几", "singer": "卢广仲", "tags": ["流行"]},
+    { "id": 305, "songName": "大人中", "singer": "卢广仲", "tags": ["流行"]},
+    { "id": 306, "songName": "那是你离开了北京的生活", "singer": "薛之谦", "tags": ["流行", "伤感"]},
+    { "id": 307, "songName": "秋意浓", "singer": "张学友", "tags": ["流行", "经典"]}
   ]
 }

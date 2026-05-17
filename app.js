@@ -15,7 +15,11 @@ const state = {
   lastDraggedLetter: ""
 };
 
-const collatorZh = new Intl.Collator("zh-CN", { sensitivity: "base" });
+const collatorZh = new Intl.Collator("zh-u-co-pinyin", {
+  sensitivity: "base",
+  numeric: true,
+  ignorePunctuation: true
+});
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
 const elements = {
@@ -223,13 +227,37 @@ function sortSongs(songs) {
       return bFav - aFav;
     }
 
-    const singerCompare = collatorZh.compare(a.singer[0] || "", b.singer[0] || "");
+    const singerAKey = getMixedSortKey(a.singer[0] || "");
+    const singerBKey = getMixedSortKey(b.singer[0] || "");
+    const singerCompare = collatorZh.compare(singerAKey, singerBKey);
     if (singerCompare !== 0) {
       return singerCompare;
     }
 
-    return collatorZh.compare(a.songName, b.songName);
+    const songAKey = getMixedSortKey(a.songName);
+    const songBKey = getMixedSortKey(b.songName);
+    return collatorZh.compare(songAKey, songBKey);
   });
+}
+
+function getMixedSortKey(value) {
+  const text = String(value || "").trim();
+  if (!text) {
+    return "";
+  }
+
+  if (window.pinyinPro && typeof window.pinyinPro.pinyin === "function") {
+    const pinyinArray = window.pinyinPro.pinyin(text, {
+      toneType: "none",
+      type: "array"
+    });
+
+    if (Array.isArray(pinyinArray) && pinyinArray.length) {
+      return pinyinArray.join("").toLowerCase();
+    }
+  }
+
+  return text.toLowerCase();
 }
 
 function renderSongTable() {
