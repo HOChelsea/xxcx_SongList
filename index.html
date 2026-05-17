@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>小小抽象的歌单</title>
+  <meta name="description" content="小小抽象的个人歌单" />
+
+  <meta property="og:title" content="小小抽象的歌单" />
+  <meta property="og:description" content="来听听我最近循环播放的歌吧" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hongaman.github.io/Website_design/" />
+  <meta property="og:image" content="https://hongaman.github.io/Website_design/cover.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <script defer src="https://cdn.jsdelivr.net/npm/pinyin-pro@3.26.0/dist/index.min.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="background-grid" aria-hidden="true"></div>
+
+  <main class="page">
+    <section class="profile-card">
+      <div class="profile-main">
+        <img class="avatar" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=320&q=80" alt="个人头像" />
+        <div class="profile-text">
+          <h1>小小抽象</h1>
+          <p class="bio">声音是我给生活写的注释。</p>
+        </div>
+      </div>
+      <nav class="platform-links" aria-label="音乐平台跳转">
+        <a href="https://www.bilibili.com" target="_blank" rel="noopener noreferrer">bilibili</a>
+        <a href="https://y.qq.com" target="_blank" rel="noopener noreferrer">貓耳</a>
+      </nav>
+    </section>
+
+    <section class="playlist-panel">
+      <div class="panel-header">
+        <h2>我的歌单</h2>
+        <div class="search-wrap">
+          <input id="searchInput" type="search" placeholder="搜索歌名 / 歌手 / 标签（支持多关键词）" aria-label="搜索歌曲" />
+        </div>
+      </div>
+
+      <div id="activeFilters" class="active-filters" hidden></div>
+
+      <div class="table-wrap" id="tableWrap">
+        <table aria-label="歌单表格">
+          <thead>
+            <tr>
+              <th>歌手</th>
+              <th>歌名</th>
+              <th>标签</th>
+              <th>收藏</th>
+            </tr>
+          </thead>
+          <tbody id="songTableBody"></tbody>
+        </table>
+      </div>
+
+      <p id="emptyState" class="empty-state" hidden>没有找到匹配歌曲噢，换个关键词试试？</p>
+    </section>
+  </main>
+
+  <aside id="alphaNav" class="alpha-nav" aria-label="歌手首字母导航"></aside>
+
+  <button id="recommendBubble" class="recommend-bubble" type="button" aria-haspopup="dialog" aria-controls="recommendModal">
+    今天听什么好？
+  </button>
+
+  <dialog id="recommendModal" class="recommend-modal" aria-labelledby="recommendTitle">
+    <div class="modal-head">
+      <h3 id="recommendTitle">随机推荐</h3>
+      <button id="closeModalBtn" class="close-modal" type="button" aria-label="关闭">×</button>
+    </div>
+
+    <p class="modal-tip">有想听的类型吗？</p>
+
+    <div id="tagFilters" class="tag-filters" role="group" aria-label="推荐标签筛选"></div>
+
+    <div class="modal-actions">
+      <button id="randomBtn" class="random-btn" type="button">随机推荐</button>
+    </div>
+
+    <section id="recommendResult" class="recommend-result" aria-live="polite">
+      <p>想不到听什么？点一下按钮，让我给你抽一首。</p>
+    </section>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
