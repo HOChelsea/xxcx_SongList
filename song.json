@@ -109,7 +109,7 @@
     { "id": 107, "songName": "未必", "singer": "兰音Reine", "tags": ["流行"] },
     { "id": 108, "songName": "唯一", "singer": "告五人", "tags": ["流行", "伤感"] },
     { "id": 109, "songName": "悟空", "singer": "戴荃", "tags": ["古风", "摇滚"] },
-    { "id": 110, "songName": "无赖", "singer": "郑中基", "tags": ["流行", "经典"] },
+    { "id": 110, "songName": "无赖", "singer": "H3R3", "tags": ["流行", "旋律说唱", "网络"] },
     { "id": 111, "songName": "习惯", "singer": "魏如萱", "tags": ["流行"] },
     { "id": 112, "songName": "遐想", "singer": "队长", "tags": ["流行"] },
     { "id": 113, "songName": "消愁", "singer": "毛不易", "tags": ["流行", "伤感"] },
@@ -200,7 +200,7 @@
     { "id": 198, "songName": "如果呢", "singer": "郑润泽", "tags": ["流行"] },
     { "id": 199, "songName": "三国恋", "singer": "Tank", "tags": ["流行", "古风"] },
     { "id": 200, "songName": "三人游", "singer": "方大同", "tags": ["R&B"] },
-    { "id": 201, "songName": "扇子舞", "singer": "蓝沁", "tags": ["流行"] },
+    { "id": 201, "songName": "扇子舞", "singer": "李常超", "tags": ["流行"] },
     { "id": 202, "songName": "声声慢", "singer": "邓福如", "tags": ["古风"] },
     { "id": 203, "songName": "输情歌", "singer": "J.Sheon", "tags": ["R&B"] },
     { "id": 204, "songName": "水星记", "singer": "郭顶", "tags": ["流行", "经典"] },
@@ -248,7 +248,7 @@
     { "id": 246, "songName": "有你在", "singer": "赵露思", "tags": ["流行"] },
     { "id": 247, "songName": "园游会", "singer": "周杰伦", "tags": ["流行", "经典"] },
     { "id": 248, "songName": "愿与愁", "singer": "林俊杰", "tags": ["流行"] },
-    { "id": 249, "songName": "云与海", "singer": "阿YueYue", "tags": ["古风"] },
+    { "id": 249, "songName": "云与海", "singer": "阿YueYue", "tags": ["流行", "伤感"] },
     { "id": 250, "songName": "艾蜜莉", "singer": "回春丹", "tags": ["摇滚"] },
     { "id": 251, "songName": "芳华慢", "singer": "封茗囧菌", "tags": ["古风"] },
     { "id": 252, "songName": "霁夜茶", "singer": "小曲儿", "tags": ["古风"] },
@@ -306,6 +306,11 @@
     { "id": 304, "songName": "几分之几", "singer": "卢广仲", "tags": ["流行"]},
     { "id": 305, "songName": "大人中", "singer": "卢广仲", "tags": ["流行"]},
     { "id": 306, "songName": "那是你离开了北京的生活", "singer": "薛之谦", "tags": ["流行", "伤感"]},
-    { "id": 307, "songName": "秋意浓", "singer": "张学友", "tags": ["流行", "经典"]}
+    { "id": 307, "songName": "秋意浓", "singer": "张学友", "tags": ["流行", "经典"]},
+    { "id": 308, "songName": "暗香", "singer": "", "tags": []},
+    { "id": 309, "songName": "野子", "singer": "", "tags": []},
+    { "id": 310, "songName": "怀珠", "singer": "", "tags": []},
+    { "id": 311, "songName": "浓缩蓝鲸", "singer": "", "tags": []}
+
   ]
 }
