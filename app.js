@@ -6,6 +6,7 @@ const STORAGE_KEYS = {
 const state = {
   songs: [],
   filteredSongs: [],
+  viewMode: "list",
   favorites: new Set(),
   selectedTags: new Set(),
   activeFilters: new Set(),
@@ -25,6 +26,10 @@ const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const elements = {
   searchInput: document.getElementById("searchInput"),
   songTableBody: document.getElementById("songTableBody"),
+  tableWrap: document.getElementById("tableWrap"),
+  galleryWrap: document.getElementById("galleryWrap"),
+  listModeBtn: document.getElementById("listModeBtn"),
+  galleryModeBtn: document.getElementById("galleryModeBtn"),
   emptyState: document.getElementById("emptyState"),
   alphaNav: document.getElementById("alphaNav"),
   recommendBubble: document.getElementById("recommendBubble"),
@@ -57,6 +62,9 @@ async function init() {
 function bindBaseEvents() {
   elements.searchInput.addEventListener("input", applySearchAndRender);
   setupAlphaDragEvents();
+
+  elements.listModeBtn.addEventListener("click", () => setViewMode("list"));
+  elements.galleryModeBtn.addEventListener("click", () => setViewMode("gallery"));
 
   elements.recommendBubble.addEventListener("click", () => {
     elements.recommendModal.showModal();
@@ -147,8 +155,9 @@ async function fetchSongs() {
 function normalizeSongs(songs) {
   return songs
     .filter((song) => song && typeof song.id === "number")
-    .map((song) => ({
+    .map((song, index) => ({
       id: song.id,
+      originalIndex: index,
       songName: String(song.songName || "").trim(),
       singer: normalizeSinger(song.singer),
       tags: Array.isArray(song.tags) ? song.tags.map((tag) => String(tag).trim()).filter(Boolean) : []
@@ -189,8 +198,43 @@ function applySearchAndRender() {
     filtered = filtered.filter((song) => matchAllActiveFilters(song));
   }
 
-  state.filteredSongs = sortSongs(filtered);
+  state.filteredSongs = state.viewMode === "gallery"
+    ? sortSongsForGallery(filtered)
+    : sortSongs(filtered);
+
   renderActiveFilters();
+  renderCurrentView();
+}
+
+function setViewMode(mode) {
+  if (mode !== "list" && mode !== "gallery") {
+    return;
+  }
+  if (state.viewMode === mode) {
+    return;
+  }
+
+  state.viewMode = mode;
+  applySearchAndRender();
+}
+
+function renderCurrentView() {
+  const inGalleryMode = state.viewMode === "gallery";
+
+  elements.listModeBtn.classList.toggle("active", !inGalleryMode);
+  elements.galleryModeBtn.classList.toggle("active", inGalleryMode);
+  elements.listModeBtn.setAttribute("aria-pressed", String(!inGalleryMode));
+  elements.galleryModeBtn.setAttribute("aria-pressed", String(inGalleryMode));
+
+  elements.tableWrap.hidden = inGalleryMode;
+  elements.galleryWrap.hidden = !inGalleryMode;
+
+  if (inGalleryMode) {
+    renderSongGallery();
+    elements.alphaNav.hidden = true;
+    return;
+  }
+
   renderSongTable();
   buildAlphaIndex();
   renderAlphaNav();
@@ -238,6 +282,21 @@ function sortSongs(songs) {
     const songBKey = getMixedSortKey(b.songName);
     return collatorZh.compare(songAKey, songBKey);
   });
+}
+
+function sortSongsForGallery(songs) {
+  return [...songs].sort((a, b) => {
+    const lengthDiff = getTextLength(a.songName) - getTextLength(b.songName);
+    if (lengthDiff !== 0) {
+      return lengthDiff;
+    }
+
+    return a.originalIndex - b.originalIndex;
+  });
+}
+
+function getTextLength(text) {
+  return Array.from(String(text || "")).length;
 }
 
 function getMixedSortKey(value) {
@@ -331,6 +390,27 @@ function renderSongTable() {
   });
 
   elements.songTableBody.appendChild(fragment);
+}
+
+function renderSongGallery() {
+  elements.galleryWrap.innerHTML = "";
+
+  if (!state.filteredSongs.length) {
+    elements.emptyState.hidden = false;
+    return;
+  }
+
+  elements.emptyState.hidden = true;
+
+  const fragment = document.createDocumentFragment();
+  state.filteredSongs.forEach((song) => {
+    const item = document.createElement("p");
+    item.className = "gallery-song";
+    item.textContent = song.songName;
+    fragment.appendChild(item);
+  });
+
+  elements.galleryWrap.appendChild(fragment);
 }
 
 function toggleFavorite(songId) {

@@ -125,15 +125,46 @@ body {
 
 .panel-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
   margin-bottom: 12px;
 }
 
 .panel-header h2 {
   margin: 0;
   font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.view-mode-switch {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.mode-btn {
+  border: 1px solid rgba(22, 33, 41, 0.2);
+  background: #fff;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.mode-btn.active {
+  border-color: rgba(15, 118, 110, 0.72);
+  background: rgba(15, 118, 110, 0.12);
+  color: #0f766e;
 }
 
 .search-wrap {
@@ -152,6 +183,20 @@ body {
 
 .table-wrap {
   overflow-x: auto;
+}
+
+.gallery-wrap {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px 14px;
+  padding: 2px 0;
+}
+
+.gallery-song {
+  margin: 0;
+  padding: 3px 0;
+  font-size: 0.96rem;
+  line-height: 1.5;
 }
 
 table {
@@ -420,9 +465,8 @@ tbody td {
 }
 
 @media (max-width: 860px) {
-  .panel-header {
-    flex-direction: column;
-    align-items: stretch;
+  .gallery-wrap {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .alpha-nav {
@@ -478,6 +522,23 @@ tbody td {
     height: 16px;
     border-radius: 5px;
     font-size: 0.52rem;
+  }
+
+  .title-row {
+    align-items: flex-start;
+  }
+
+  .view-mode-switch {
+    width: 100%;
+  }
+
+  .mode-btn {
+    flex: 1;
+    text-align: center;
+  }
+
+  .gallery-wrap {
+    grid-template-columns: 1fr;
   }
 }
 
