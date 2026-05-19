@@ -1,14 +1,19 @@
 :root {
-  --bg-1: #f6f8ff;
-  --bg-2: #f2ffe9;
-  --ink: #162129;
-  --ink-soft: #485861;
-  --panel: rgba(255, 255, 255, 0.86);
-  --panel-border: rgba(24, 35, 46, 0.12);
-  --accent: #ef4444;
-  --accent-2: #0f766e;
-  --chip: #f8fafc;
-  --shadow: 0 18px 48px rgba(13, 25, 37, 0.14);
+  /* 基础背景色，微调为契合辅助色与主色的温润色调 */
+  --bg-1: #faffa3;
+  --bg-2: #faffa3;
+  --ink: #044537;
+  --ink-soft: #10425f;
+  --panel: rgb(251, 251, 228);
+  --panel-border: rgba(36, 104, 117, 0.12); /* 融入辅助色 */
+  --chip: #fff490;
+  --shadow: 0 18px 48px rgba(255, 255, 255, 0);
+
+  /* 主题色配置 */
+  --accent: #f1eb89;        /* 你的主色（明亮黄） */
+  --accent-2: #246875;      /* 你的辅色（深蓝绿） */
+  --accent-2-soft: rgba(2, 202, 241, 0.12); /* 辅色的浅色半透明版 */
+  --accent-2-mid: rgba(0, 208, 255, 0.45);  /* 辅色的中等半透明版 */
 }
 
 * {
@@ -25,8 +30,8 @@ body {
   font-family: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", sans-serif;
   color: var(--ink);
   background:
-    radial-gradient(circle at 8% 10%, rgba(255, 174, 0, 0.2), transparent 30%),
-    radial-gradient(circle at 94% 6%, rgba(16, 185, 129, 0.19), transparent 32%),
+    radial-gradient(circle at 8% 10%, rgb(234, 225, 50), transparent 40%), /* 使用主色黄渐变 */
+    radial-gradient(circle at 94% 6%, rgba(36, 104, 117, 0.18), transparent 35%),  /* 使用辅色蓝绿渐变 */
     linear-gradient(135deg, var(--bg-1), var(--bg-2));
 }
 
@@ -35,8 +40,8 @@ body {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(22, 33, 41, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(22, 33, 41, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(36, 104, 117, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(36, 104, 117, 0.03) 1px, transparent 1px);
   background-size: 24px 24px;
   mask-image: radial-gradient(circle at center, black 32%, transparent 96%);
 }
@@ -72,7 +77,7 @@ body {
   height: 88px;
   border-radius: 26px;
   object-fit: cover;
-  border: 2px solid rgba(22, 33, 41, 0.09);
+  border: 2px solid rgba(36, 104, 117, 0.15);
 }
 
 .profile-text h1 {
@@ -96,11 +101,16 @@ body {
 .wechat-row button {
   border: 0;
   border-radius: 999px;
-  background: var(--accent-2);
+  background: var(--accent-2); /* 辅色作为主按钮，保证清晰度 */
   color: #fff;
   padding: 7px 12px;
   font-weight: 600;
   cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.wechat-row button:hover {
+  opacity: 0.9;
 }
 
 .platform-links {
@@ -114,9 +124,14 @@ body {
   text-decoration: none;
   padding: 8px 12px;
   border-radius: 999px;
-  background: rgba(22, 33, 41, 0.06);
+  background: rgba(36, 104, 117, 0.06);
   color: var(--ink);
   font-size: 0.92rem;
+  transition: background 0.2s;
+}
+
+.platform-links a:hover {
+  background: var(--accent); /* 悬浮时展示主色黄 */
 }
 
 .playlist-panel {
@@ -150,7 +165,7 @@ body {
 }
 
 .mode-btn {
-  border: 1px solid rgba(22, 33, 41, 0.2);
+  border: 1px solid rgba(36, 104, 117, 0.2);
   background: #fff;
   color: var(--ink);
   border-radius: 999px;
@@ -162,9 +177,9 @@ body {
 }
 
 .mode-btn.active {
-  border-color: rgba(15, 118, 110, 0.72);
-  background: rgba(15, 118, 110, 0.12);
-  color: #0f766e;
+  border-color: var(--accent-2);
+  background: var(--accent-2-soft);
+  color: var(--accent-2);
 }
 
 .search-wrap {
@@ -174,11 +189,17 @@ body {
 
 #searchInput {
   width: 100%;
-  border: 1px solid rgba(22, 33, 41, 0.18);
+  border: 1px solid rgba(36, 104, 117, 0.18);
   border-radius: 12px;
   padding: 10px 12px;
   font-size: 16px;
   background: #fff;
+}
+
+#searchInput:focus {
+  outline: none;
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 3px rgba(36, 104, 117, 0.1);
 }
 
 .table-wrap {
@@ -210,13 +231,13 @@ thead th {
   padding: 12px 10px;
   font-size: 0.92rem;
   color: var(--ink-soft);
-  border-bottom: 1px solid rgba(22, 33, 41, 0.12);
+  border-bottom: 1px solid rgba(36, 104, 117, 0.12);
   white-space: nowrap;
 }
 
 tbody td {
   padding: 12px 10px;
-  border-bottom: 1px dashed rgba(22, 33, 41, 0.1);
+  border-bottom: 1px dashed rgba(36, 104, 117, 0.08);
   vertical-align: top;
 }
 
@@ -225,7 +246,7 @@ tbody td {
 }
 
 .song-row.highlight {
-  background: rgba(15, 118, 110, 0.15);
+  background: rgba(241, 235, 137, 0.25); /* 高亮行使用主色黄底色 */
 }
 
 .singer-cell {
@@ -235,8 +256,8 @@ tbody td {
 }
 
 .singer-pill {
-  background: rgba(15, 118, 110, 0.1);
-  color: #0f766e;
+  background: var(--accent-2-soft);
+  color: var(--accent-2);
   border-radius: 999px;
   padding: 3px 9px;
   font-size: 0.82rem;
@@ -251,7 +272,7 @@ tbody td {
 .tag {
   display: inline-block;
   background: var(--chip);
-  border: 1px solid rgba(22, 33, 41, 0.12);
+  border: 1px solid rgba(36, 104, 117, 0.1);
   border-radius: 999px;
   padding: 4px 9px;
   font-size: 0.8rem;
@@ -261,16 +282,18 @@ tbody td {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 1px solid rgba(22, 33, 41, 0.2);
+  border: 1px solid rgba(36, 104, 117, 0.2);
   background: #fff;
   cursor: pointer;
   font-size: 1.05rem;
+  transition: all 0.2s;
 }
 
+/* 收藏按钮激活：背景采用主色黄，边框采用辅色增加层次感 */
 .fav-btn.favored {
-  color: var(--accent);
-  border-color: rgba(239, 68, 68, 0.45);
-  background: rgba(254, 226, 226, 0.8);
+  color: var(--accent-2);
+  border-color: var(--accent-2-mid);
+  background: var(--accent);
 }
 
 .empty-state {
@@ -288,10 +311,10 @@ tbody td {
   gap: 3px;
   padding: 8px 6px;
   border-radius: 14px;
-  border: 1px solid rgba(22, 33, 41, 0.16);
+  border: 1px solid rgba(36, 104, 117, 0.16);
   background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(8px);
-  box-shadow: 0 10px 24px rgba(13, 25, 37, 0.16);
+  box-shadow: 0 10px 24px rgba(36, 104, 117, 0.12);
   touch-action: none;
   user-select: none;
   cursor: grab;
@@ -307,22 +330,24 @@ tbody td {
   height: 20px;
   border: 0;
   border-radius: 6px;
-  background: rgba(15, 118, 110, 0.16);
-  color: #fff;
+  background: var(--accent-2-soft);
+  color: var(--accent-2); /* 字母导航未悬浮时字体使用辅色 */
   cursor: pointer;
   font-size: 0.64rem;
   font-weight: 700;
+  transition: all 0.15s;
 }
 
 .alpha-btn:hover,
 .alpha-btn:focus-visible {
-  background: rgba(15, 118, 110, 0.92);
+  background: var(--accent-2);
+  color: #fff;
   outline: none;
 }
 
 .alpha-btn.disabled {
-  background: rgba(22, 33, 41, 0.1);
-  color: rgba(255, 255, 255, 0.55);
+  background: rgba(36, 104, 117, 0.05);
+  color: rgba(16, 35, 40, 0.25);
 }
 
 .recommend-bubble {
@@ -335,11 +360,12 @@ tbody td {
   border: 0;
   padding: 14px;
   color: #fff;
-  background: linear-gradient(145deg, #0f766e, #ef4444);
+  /* 悬浮球使用主色和辅色的高级双色渐变 */
+  background: linear-gradient(135deg, #e3dc6d, var(--accent-2));
   font-weight: 700;
   line-height: 1.25;
   cursor: pointer;
-  box-shadow: 0 15px 35px rgba(15, 118, 110, 0.35);
+  box-shadow: 0 15px 35px rgba(36, 104, 117, 0.25);
   animation: riseIn 500ms ease;
 }
 
@@ -359,11 +385,11 @@ tbody td {
   border-radius: 16px;
   width: min(560px, calc(100vw - 24px));
   padding: 16px;
-  box-shadow: 0 24px 56px rgba(13, 25, 37, 0.28);
+  box-shadow: 0 24px 56px rgba(16, 35, 40, 0.25);
 }
 
 .recommend-modal::backdrop {
-  background: rgba(13, 25, 37, 0.55);
+  background: rgba(16, 35, 40, 0.5);
 }
 
 .modal-head {
@@ -383,7 +409,8 @@ tbody td {
   border-radius: 10px;
   cursor: pointer;
   font-size: 1.35rem;
-  background: rgba(22, 33, 41, 0.1);
+  background: rgba(36, 104, 117, 0.1);
+  color: var(--accent-2);
 }
 
 .modal-tip {
@@ -399,17 +426,18 @@ tbody td {
 }
 
 .filter-btn {
-  border: 1px solid rgba(22, 33, 41, 0.18);
+  border: 1px solid rgba(36, 104, 117, 0.18);
   background: #fff;
   border-radius: 999px;
   padding: 6px 12px;
   cursor: pointer;
+  transition: all 0.2s;
 }
 
 .filter-btn.active {
-  border-color: rgba(15, 118, 110, 0.7);
-  background: rgba(15, 118, 110, 0.12);
-  color: #0f766e;
+  border-color: var(--accent-2);
+  background: var(--accent-2-soft);
+  color: var(--accent-2);
 }
 
 .modal-actions {
@@ -422,7 +450,8 @@ tbody td {
   padding: 10px 16px;
   font-weight: 700;
   color: #fff;
-  background: linear-gradient(130deg, #ef4444, #0f766e);
+  /* 随机按钮使用主辅色渐变 */
+  background: linear-gradient(130deg, var(--accent-2), #cdca6c);
   cursor: pointer;
 }
 
@@ -431,6 +460,7 @@ tbody td {
   padding: 12px;
   border-radius: 12px;
   background: rgba(248, 250, 252, 0.8);
+  border-left: 4px solid var(--accent-2);
 }
 
 .recommend-title {
@@ -452,7 +482,7 @@ tbody td {
   pointer-events: none;
   padding: 8px 14px;
   border-radius: 999px;
-  background: rgba(22, 33, 41, 0.88);
+  background: rgba(22, 33, 41, 0.9);
   color: #fff;
   font-size: 0.9rem;
   transition: opacity 0.2s ease, transform 0.2s ease;
@@ -553,9 +583,9 @@ tbody td {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  background: rgba(15, 118, 110, 0.12);
-  border: 1px solid rgba(15, 118, 110, 0.45);
-  color: #0f766e;
+  background: var(--accent-2-soft);
+  border: 1px solid var(--accent-2-mid);
+  color: var(--accent-2);
   border-radius: 999px;
   padding: 5px 10px;
   font-size: 0.84rem;
@@ -564,7 +594,7 @@ tbody td {
 .active-filter-chip .remove-filter {
   border: 0;
   background: none;
-  color: #0f766e;
+  color: var(--accent-2);
   cursor: pointer;
   font-size: 1rem;
   line-height: 1;
@@ -572,10 +602,11 @@ tbody td {
   margin-left: 2px;
 }
 
+/* 清除过滤按钮：背景采用浅红，文字改为深红（避免原版用主色黄导致看不清字） */
 .clear-filters-btn {
   border: 1px solid rgba(239, 68, 68, 0.4);
   background: rgba(254, 226, 226, 0.5);
-  color: var(--accent);
+  color: #ef4444; 
   border-radius: 999px;
   padding: 5px 12px;
   font-size: 0.84rem;
@@ -589,22 +620,23 @@ tbody td {
 }
 
 .singer-pill:hover {
-  background: rgba(15, 118, 110, 0.22);
+  background: rgba(36, 104, 117, 0.22);
 }
 
 .tag:hover {
-  background: rgba(22, 33, 41, 0.14);
+  background: rgba(36, 104, 117, 0.14);
 }
 
 .singer-pill.filter-active {
-  background: rgba(15, 118, 110, 0.28);
-  outline: 1px solid rgba(15, 118, 110, 0.55);
+  background: var(--accent); /* 选中的歌手/标签，用主色黄作为高亮背景 */
+  color: var(--ink);         /* 搭配深色字 */
+  outline: 1px solid var(--accent-2-mid);
   font-weight: 600;
 }
 
 .tag.filter-active {
-  background: rgba(15, 118, 110, 0.12);
-  border-color: rgba(15, 118, 110, 0.5);
-  color: #0f766e;
+  background: var(--accent); 
+  border-color: var(--accent-2-mid);
+  color: var(--ink);
   font-weight: 600;
 }

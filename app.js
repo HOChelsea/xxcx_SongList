@@ -235,6 +235,9 @@ function renderCurrentView() {
     return;
   }
 
+  // Clear gallery content when switching to list mode
+  elements.galleryWrap.innerHTML = "";
+
   renderSongTable();
   buildAlphaIndex();
   renderAlphaNav();
@@ -643,7 +646,7 @@ function renderRecommendation(song) {
   }
 
   const singers = song.singer.join(" / ");
-  const tags = song.tags.map((tag) => `<span class=\"tag\">${escapeHtml(tag)}</span>`).join(" ");
+  const tags = song.tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join(" ");
 
   elements.recommendResult.innerHTML = `
     <p class="recommend-title">${escapeHtml(song.songName)}</p>
