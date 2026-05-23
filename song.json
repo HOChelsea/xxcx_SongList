@@ -516,7 +516,7 @@
     { "id": 512, "songName": "妹子", "singer": "陈珊妮", "tags": ["流行", "独立"] },
     { "id": 513, "songName": "一程山路", "singer": "毛不易", "tags": ["流行", "民谣", "治愈"] },
     { "id": 514, "songName": "于你", "singer": "关浩德", "tags": ["流行", "R&B"] },
-    { "id": 515, "songName": "偏差", "singer": "欧豪", "tags": ["流行", "影视"] },
+    { "id": 515, "songName": "偏差", "singer": "Yu仔", "tags": ["流行", "广播剧"] },
     { "id": 516, "songName": "再见深海", "singer": "唐汉霄", "tags": ["流行", "影视", "治愈"] },
     { "id": 518, "songName": "到时说爱我", "singer": ["容祖儿", "余佳运"], "tags": ["流行", "合唱", "抒情"] },
     { "id": 519, "songName": "想念拟人化", "singer": "孟慧圆", "tags": ["流行", "安静"] },
