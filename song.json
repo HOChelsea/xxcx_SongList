@@ -216,7 +216,7 @@
     { "id": 214, "songName": "调情师", "singer": "Jony J", "tags": ["说唱"] },
     { "id": 215, "songName": "同花顺", "singer": "林俊杰", "tags": ["流行"] },
     { "id": 216, "songName": "挖蛤蜊", "singer": "张鹤伦", "tags": ["流行"] },
-    { "id": 217, "songName": "娃娃脸", "singer": "后弦", "tags": ["流行"] },
+    { "id": 217, "songName": "娃娃脸", "singer": "后弦", "tags": ["流行", "小甜歌"] },
     { "id": 218, "songName": "微博控", "singer": "许嵩", "tags": ["流行"] },
     { "id": 219, "songName": "醉赤壁", "singer": "林俊杰", "tags": ["古风", "经典"] },
     { "id": 220, "songName": "微风吹", "singer": "李荣浩", "tags": ["流行"] },
