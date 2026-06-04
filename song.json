@@ -498,10 +498,10 @@
     { "id": 497, "songName": "Mojito", "singer": "周杰伦", "tags": ["流行", "拉丁", "经典"] },
     { "id": 498, "songName": "NUNA3.0", "singer": "队长", "tags": ["流行"] },
     { "id": 499, "songName": "Opera#2", "singer": "Vitas", "tags": ["古典", "流行", "高音"] },
-    { "id": 500, "songName": "Simon", "singer": "丁世光", "tags": ["R&B"] },
+    { "id": 500, "songName": "Simon (周菲戈版本)", "singer": "丁世光", "tags": ["R&B"] },
     { "id": 501, "songName": "Trust Me", "singer": "李大奔", "tags": ["说唱"] },
     { "id": 502, "songName": "戀愛ing", "singer": "五月天", "tags": ["摇滚", "轻快"] },
-    { "id": 503, "songName": "听（dj）", "singer": "张杰", "tags": ["DJ", "电子"] },
+    { "id": 503, "songName": "听(dj)", "singer": "张杰", "tags": ["DJ", "电子"] },
 
 
     { "id": 504, "songName": "坠落", "singer": "蔡健雅", "tags": ["流行", "伤感"] },
