@@ -33,7 +33,7 @@
     { "id": 31, "songName": "底细", "singer": "杨宗纬", "tags": ["流行", "伤感"] },
     { "id": 32, "songName": "冻结", "singer": "林俊杰", "tags": ["流行", "经典"] },
     { "id": 33, "songName": "东西", "singer": "林俊呈", "tags": ["流行", "轻快"] },
-    { "id": 34, "songName": "反正", "singer": "于冬然", "tags": ["流行"] },
+    { "id": 34, "songName": "反正", "singer": "于冬然", "tags": ["流行", "轻快"] },
     { "id": 35, "songName": "搁浅", "singer": "周杰伦", "tags": ["流行", "经典", "伤感"] },
     { "id": 36, "songName": "光棍", "singer": "胡歌", "tags": ["流行"] },
     { "id": 37, "songName": "光亮（大型纪录片《紫禁城》主题曲）", "singer": "周深", "tags": ["流行", "古风"] },
@@ -574,6 +574,7 @@
     { "id": 574, "songName": "素颜", "singer": ["许嵩", "何曼婷"], "tags": ["流行", "小甜歌", "抒情"] },
     { "id": 575, "songName": "恋爱ing", "singer": "五月天", "tags": ["流行", "小甜歌"] },
     { "id": 576, "songName": "输入法打可爱按第五", "singer": "陈令韬", "tags": ["流行", "小甜歌"] },
+    { "id": 576, "songName": "胡广生", "singer": "任素汐", "tags": ["流行", "抒情", "民谣"] },
     { "id": 577, "songName": "去北极忘记你", "singer": "队长", "tags": ["流行", "伤感"] }
       
     
