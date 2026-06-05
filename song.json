@@ -295,7 +295,7 @@
     { "id": 293, "songName": "灰色头像", "singer": "许嵩", "tags": ["流行"] },
     { "id": 294, "songName": "假装快乐", "singer": "赵磊", "tags": ["流行"] },
     { "id": 295, "songName": "交换余生", "singer": "林俊杰", "tags": ["流行"] },
-    { "id": 296, "songName": "今夜有雨", "singer": "en", "tags": ["流行"] },
+    { "id": 296, "songName": "今夜有雨", "singer": "en", "tags": ["流行", "网络"] },
     { "id": 297, "songName": "惊鸿一面", "singer": "许嵩", "tags": ["古风"] },
     { "id": 298, "songName": "就忘了吧", "singer": "1K", "tags": ["流行"] },
     { "id": 299, "songName": "君临天下", "singer": ["特曼", "李常超"], "tags": ["古风"] },
@@ -574,8 +574,9 @@
     { "id": 574, "songName": "素颜", "singer": ["许嵩", "何曼婷"], "tags": ["流行", "小甜歌", "抒情"] },
     { "id": 575, "songName": "恋爱ing", "singer": "五月天", "tags": ["流行", "小甜歌"] },
     { "id": 576, "songName": "输入法打可爱按第五", "singer": "陈令韬", "tags": ["流行", "小甜歌"] },
-    { "id": 576, "songName": "胡广生", "singer": "任素汐", "tags": ["流行", "抒情", "民谣"] },
-    { "id": 577, "songName": "去北极忘记你", "singer": "队长", "tags": ["流行", "伤感"] }
+    { "id": 577, "songName": "胡广生", "singer": "任素汐", "tags": ["流行", "抒情", "民谣"] },
+    { "id": 578, "songName": "假如", "singer": "赵毅", "tags": ["流行", "摇滚", "高音"] },
+    { "id": 579, "songName": "去北极忘记你", "singer": "队长", "tags": ["流行", "伤感"] }
       
     
 
