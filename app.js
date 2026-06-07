@@ -283,7 +283,12 @@ function sortSongs(songs) {
 
     const songAKey = getMixedSortKey(a.songName);
     const songBKey = getMixedSortKey(b.songName);
-    return collatorZh.compare(songAKey, songBKey);
+    const songCompare = collatorZh.compare(songAKey, songBKey);
+    if (songCompare !== 0) {
+      return songCompare;
+    }
+
+    return a.originalIndex - b.originalIndex;
   });
 }
 
@@ -490,16 +495,10 @@ function buildAlphaIndex() {
   const indexMap = new Map();
 
   state.filteredSongs.forEach((song) => {
-    const letters = new Set(song.singer.map((name) => getSingerInitial(name)));
-
-    letters.forEach((letter) => {
-      if (!/^[A-Z]$/.test(letter)) {
-        return;
-      }
-      if (!indexMap.has(letter)) {
-        indexMap.set(letter, song.id);
-      }
-    });
+    const primaryLetter = getSingerInitial(song.singer[0] || "");
+    if (/^[A-Z]$/.test(primaryLetter) && !indexMap.has(primaryLetter)) {
+      indexMap.set(primaryLetter, song.id);
+    }
   });
 
   state.alphaIndexMap = indexMap;
