@@ -214,7 +214,7 @@
     { "id": 212, "songName": "天黑黑", "singer": "孙燕姿", "tags": ["流行", "经典"] },
     { "id": 213, "songName": "甜甜的", "singer": "周杰伦", "tags": ["流行", "轻快"] },
     { "id": 214, "songName": "调情师", "singer": "Jony J", "tags": ["说唱"] },
-    { "id": 215, "songName": "同花顺", "singer": "林俊杰", "tags": ["流行"] },
+    { "id": 215, "songName": "同花顺", "singer": "林倛玉", "tags": ["流行"] },
     { "id": 216, "songName": "挖蛤蜊", "singer": "张鹤伦", "tags": ["流行"] },
     { "id": 217, "songName": "娃娃脸", "singer": "后弦", "tags": ["流行", "小甜歌"] },
     { "id": 218, "songName": "微博控", "singer": "许嵩", "tags": ["流行"] },
@@ -500,7 +500,6 @@
     { "id": 499, "songName": "Opera#2", "singer": "Vitas", "tags": ["古典", "流行", "高音"] },
     { "id": 500, "songName": "Simon (周菲戈版本)", "singer": "丁世光", "tags": ["R&B"] },
     { "id": 501, "songName": "Trust Me", "singer": "李大奔", "tags": ["说唱"] },
-    { "id": 502, "songName": "戀愛ing", "singer": "五月天", "tags": ["摇滚", "轻快"] },
     { "id": 503, "songName": "听(dj)", "singer": "张杰", "tags": ["DJ", "电子"] },
 
 
@@ -532,7 +531,6 @@
     { "id": 531, "songName": "红颜", "singer": "胡彦斌", "tags": ["古风", "流行"] },
     { "id": 532, "songName": "连名带姓", "singer": "张惠妹", "tags": ["流行", "伤感"] },
     { "id": 533, "songName": "如果没有你", "singer": "莫文蔚", "tags": ["流行", "经典", "伤感"] },
-    { "id": 534, "songName": "红颜", "singer": "胡彦斌", "tags": ["古风", "流行"] },
     { "id": 535, "songName": "霓虹甜心", "singer": "马赛克乐队", "tags": ["摇滚", "复古", "小甜歌"] },
     { "id": 536, "songName": "都市沙漠", "singer": "郑润泽", "tags": ["流行", "R&B"] },
     { "id": 537, "songName": "背对背拥抱", "singer": "林俊杰", "tags": ["流行", "经典", "伤感"] },
