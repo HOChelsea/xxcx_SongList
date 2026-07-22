@@ -587,7 +587,9 @@
     { "id": 588, "songName": "不变", "singer": "魏晨", "tags": ["流行", "抒情", "治愈"] },
     { "id": 589, "songName": "Love Song", "singer": "方大同", "tags": ["流行", "抒情", "治愈", "R&B"] },
     { "id": 590, "songName": "爱爱爱", "singer": "方大同", "tags": ["流行", "抒情", "治愈", "R&B"] },
-    { "id": 591, "songName": "去北极忘记你", "singer": "汤令山", "tags": ["流行", "伤感"] }
+    { "id": 591, "songName": "别问很可怕", "singer": "J.Sheon", "tags": ["R&B", "流行", "伤感", "抒情"] },
+    { "id": 591, "songName": "信仰", "singer": "张信哲", "tags": ["流行", "抒情", "经典", "治愈"] },
+    { "id": 592, "songName": "去北极忘记你", "singer": "汤令山", "tags": ["流行", "伤感"] }
 
     
 
