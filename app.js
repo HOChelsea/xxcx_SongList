@@ -1,7 +1,15 @@
 const STORAGE_KEYS = {
   favorites: "playlist__favorites",
-  selectedTags: "playlist__selectedTags"
+  selectedTags: "playlist__selectedTags",
+  contactName: "playlist__contactName"
 };
+
+const EMAILJS_CONFIG = {
+  publicKey: "ZViuSZnR2gTJ0gblY",
+  serviceId: "service_6nz05vp",
+  templateId: "template_2fsg8kp"
+};
+const CONTACT_COOLDOWN_MS = 10_000;
 
 const state = {
   songs: [],
@@ -13,7 +21,10 @@ const state = {
   allTags: [],
   alphaIndexMap: new Map(),
   alphaDragActive: false,
-  lastDraggedLetter: ""
+  lastDraggedLetter: "",
+  contactSubmitting: false,
+  contactCooldownUntil: 0,
+  emailJsReady: false
 };
 
 const collatorZh = new Intl.Collator("zh-u-co-pinyin", {
@@ -32,6 +43,14 @@ const elements = {
   galleryModeBtn: document.getElementById("galleryModeBtn"),
   emptyState: document.getElementById("emptyState"),
   alphaNav: document.getElementById("alphaNav"),
+  contactBubble: document.getElementById("contactBubble"),
+  contactModal: document.getElementById("contactModal"),
+  closeContactModalBtn: document.getElementById("closeContactModalBtn"),
+  contactForm: document.getElementById("contactForm"),
+  contactNameInput: document.getElementById("contactNameInput"),
+  contactMessageInput: document.getElementById("contactMessageInput"),
+  contactSubmitBtn: document.getElementById("contactSubmitBtn"),
+  contactSuccessTip: document.getElementById("contactSuccessTip"),
   recommendBubble: document.getElementById("recommendBubble"),
   recommendModal: document.getElementById("recommendModal"),
   closeModalBtn: document.getElementById("closeModalBtn"),
@@ -48,6 +67,7 @@ init().catch((error) => {
 });
 
 async function init() {
+  initEmailJs();
   bindBaseEvents();
   restoreStorage();
 
@@ -65,6 +85,29 @@ function bindBaseEvents() {
 
   elements.listModeBtn.addEventListener("click", () => setViewMode("list"));
   elements.galleryModeBtn.addEventListener("click", () => setViewMode("gallery"));
+
+  elements.contactBubble.addEventListener("click", openContactModal);
+
+  elements.closeContactModalBtn.addEventListener("click", () => {
+    elements.contactModal.close();
+  });
+
+  elements.contactModal.addEventListener("click", (event) => {
+    const rect = elements.contactModal.getBoundingClientRect();
+    const isOutside =
+      event.clientX < rect.left ||
+      event.clientX > rect.right ||
+      event.clientY < rect.top ||
+      event.clientY > rect.bottom;
+
+    if (isOutside) {
+      elements.contactModal.close();
+    }
+  });
+
+  elements.contactModal.addEventListener("close", hideContactSuccessTip);
+
+  elements.contactForm.addEventListener("submit", handleContactSubmit);
 
   elements.recommendBubble.addEventListener("click", () => {
     elements.recommendModal.showModal();
@@ -115,6 +158,126 @@ function setupAlphaDragEvents() {
     state.lastDraggedLetter = "";
     elements.alphaNav.classList.remove("dragging");
   });
+}
+
+function initEmailJs() {
+  if (!window.emailjs || typeof window.emailjs.init !== "function") {
+    state.emailJsReady = false;
+    return;
+  }
+
+  try {
+    window.emailjs.init({
+      publicKey: EMAILJS_CONFIG.publicKey
+    });
+    state.emailJsReady = true;
+  } catch (error) {
+    state.emailJsReady = false;
+    console.warn("EmailJS init failed", error);
+  }
+}
+
+function openContactModal() {
+  hideContactSuccessTip();
+  const savedName = readTextStorage(STORAGE_KEYS.contactName, "").trim();
+  if (savedName) {
+    elements.contactNameInput.value = savedName;
+  }
+
+  elements.contactModal.showModal();
+  if (savedName) {
+    elements.contactMessageInput.focus();
+  } else {
+    elements.contactNameInput.focus();
+  }
+}
+
+async function handleContactSubmit(event) {
+  event.preventDefault();
+
+  if (state.contactSubmitting) {
+    return;
+  }
+
+  const now = Date.now();
+  if (state.contactCooldownUntil > now) {
+    const seconds = Math.ceil((state.contactCooldownUntil - now) / 1000);
+    showToast(`提交太频繁，请 ${seconds} 秒后再试`);
+    return;
+  }
+
+  const name = String(elements.contactNameInput.value || "").trim();
+  const message = String(elements.contactMessageInput.value || "").trim();
+
+  if (!name) {
+    showToast("请先输入名字");
+    elements.contactNameInput.focus();
+    return;
+  }
+
+  if (!message) {
+    showToast("请先输入想说的话");
+    elements.contactMessageInput.focus();
+    return;
+  }
+
+  if (!state.emailJsReady || !window.emailjs || typeof window.emailjs.send !== "function") {
+    showToast("邮件服务尚未配置");
+    return;
+  }
+
+  state.contactSubmitting = true;
+  elements.contactSubmitBtn.disabled = true;
+  elements.contactSubmitBtn.textContent = "提交中...";
+
+  try {
+    await window.emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, {
+      name,
+      message,
+      page_url: window.location.href,
+      submitted_at: new Date().toISOString()
+    });
+
+    writeTextStorage(STORAGE_KEYS.contactName, name);
+    elements.contactNameInput.value = name;
+    elements.contactMessageInput.value = "";
+    state.contactCooldownUntil = Date.now() + CONTACT_COOLDOWN_MS;
+    showContactSuccessTip();
+  } catch (error) {
+    console.error("Email send failed", error);
+    showToast("提交失败，请稍后再试");
+  } finally {
+    state.contactSubmitting = false;
+    elements.contactSubmitBtn.disabled = false;
+    elements.contactSubmitBtn.textContent = "提交留言";
+  }
+}
+
+function showContactSuccessTip() {
+  const tip = elements.contactSuccessTip;
+  if (!tip) {
+    return;
+  }
+
+  tip.hidden = false;
+  tip.classList.add("show");
+  window.clearTimeout(showContactSuccessTip.timer);
+  showContactSuccessTip.timer = window.setTimeout(() => {
+    tip.classList.remove("show");
+    window.setTimeout(() => {
+      tip.hidden = true;
+    }, 220);
+  }, 2200);
+}
+
+function hideContactSuccessTip() {
+  const tip = elements.contactSuccessTip;
+  if (!tip) {
+    return;
+  }
+  window.clearTimeout(showContactSuccessTip.timer);
+  tip.classList.remove("show");
+  tip.hidden = true;
 }
 
 function selectAlphaByPoint(clientX, clientY, silentIfMissing) {
@@ -680,6 +843,23 @@ function readJsonStorage(key, fallback) {
 function writeJsonStorage(key, value) {
   try {
     localStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+    console.warn("localStorage write failed", error);
+  }
+}
+
+function readTextStorage(key, fallback) {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw == null ? fallback : String(raw);
+  } catch (error) {
+    return fallback;
+  }
+}
+
+function writeTextStorage(key, value) {
+  try {
+    localStorage.setItem(key, String(value));
   } catch (error) {
     console.warn("localStorage write failed", error);
   }
