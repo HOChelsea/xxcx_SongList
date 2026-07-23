@@ -208,12 +208,7 @@ async function handleContactSubmit(event) {
 
   const name = String(elements.contactNameInput.value || "").trim();
   const message = String(elements.contactMessageInput.value || "").trim();
-
-  if (!name) {
-    showToast("请先输入名字");
-    elements.contactNameInput.focus();
-    return;
-  }
+  const submitterName = name || "匿名觀眾";
 
   if (!message) {
     showToast("请先输入想说的话");
@@ -232,13 +227,15 @@ async function handleContactSubmit(event) {
 
   try {
     await window.emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, {
-      name,
+      name: submitterName,
       message,
       page_url: window.location.href,
       submitted_at: new Date().toISOString()
     });
 
-    writeTextStorage(STORAGE_KEYS.contactName, name);
+    if (name) {
+      writeTextStorage(STORAGE_KEYS.contactName, name);
+    }
     elements.contactNameInput.value = name;
     elements.contactMessageInput.value = "";
     state.contactCooldownUntil = Date.now() + CONTACT_COOLDOWN_MS;
