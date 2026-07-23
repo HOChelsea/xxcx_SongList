@@ -1,26 +1,10 @@
 [
   {
     "submission": {
-        "id": 1,
-        "name": "张三",
-        "message": "111",
-        "submitted_at": "2026-07-23T10:30:00.000Z"
-    }
-  },
-  {
-    "submission": {
-        "id": 2,
-        "name": "李四",
-        "message": "222",
-        "submitted_at": "2026-07-23T11:15:22.000Z"
-    }
-  },
-  {
-    "submission": {
-        "id": 3,
-        "name": "王五",
-        "message": "333",
-        "submitted_at": "2026-07-23T14:05:10.000Z"
-    }
+      "id": 1,
+      "name": "小抽象",
+      "message": "哈哈哈哈哈哈！想听什么就说！",
+      "submitted_at": "2026-07-23T17:13:43.462Z"
   }
+}
 ]
