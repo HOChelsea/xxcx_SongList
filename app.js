@@ -208,7 +208,7 @@ async function handleContactSubmit(event) {
 
   const name = String(elements.contactNameInput.value || "").trim();
   const message = String(elements.contactMessageInput.value || "").trim();
-  const submitterName = name || "匿名觀眾";
+  const submitterName = name || "匿名观众";
 
   if (!message) {
     showToast("请先输入想说的话");
