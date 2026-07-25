@@ -499,6 +499,12 @@ tbody td {
   background: rgba(255, 255, 255, 0.85);
 }
 
+.recommend-bubble,
+.contact-bubble,
+.home-bubble {
+  font-size: 0.9rem;
+}
+
 .contact-modal {
   border: none;
   border-radius: 16px;
@@ -725,7 +731,6 @@ tbody td {
   .recommend-bubble {
     width: 124px;
     height: 52px;
-    font-size: 0.86rem;
   }
 
   .contact-bubble {
@@ -733,14 +738,18 @@ tbody td {
     height: 52px;
     bottom: 84px;
     right: 22px;
-    font-size: 0.82rem;
   }
 
   .home-bubble {
     width: 124px;
     height: 52px;
     right: 22px;
-    font-size: 0.82rem;
+  }
+
+  .recommend-bubble,
+  .contact-bubble,
+  .home-bubble {
+    font-size: 0.84rem;
   }
 }
 
