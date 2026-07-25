@@ -22,7 +22,6 @@
   <link rel="stylesheet" href="styles.css" />
 
   <script defer src="https://cdn.jsdelivr.net/npm/pinyin-pro@3.26.0/dist/index.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script defer src="app.js"></script>
 </head>
 <body>
@@ -40,8 +39,6 @@
       <nav class="platform-links" aria-label="音乐平台跳转">
         <a href="https://space.bilibili.com/3546934367226554?spm_id_from=333.337.0.0" target="_blank" rel="noopener noreferrer">bilibili: 每晚10点到凌晨2点</a>
         <a href="https://www.missevan.com/30690288/" target="_blank" rel="noopener noreferrer">貓耳： 每晚凌晨2点到精疲力尽</a>
-        <br>
-        <a href="message.html">留言板</a>
       </nav>
     </section>
 
@@ -83,32 +80,7 @@
 
   <aside id="alphaNav" class="alpha-nav" aria-label="歌手首字母导航"></aside>
 
-  <button id="contactBubble" class="contact-bubble" type="button" aria-haspopup="dialog" aria-controls="contactModal">
-    给我留言吧！
-  </button>
-
-  <dialog id="contactModal" class="contact-modal" aria-labelledby="contactTitle">
-    <div class="modal-head">
-      <h3 id="contactTitle">留言信箱</h3>
-      <button id="closeContactModalBtn" class="close-modal" type="button" aria-label="关闭">×</button>
-    </div>
-
-    <p class="modal-tip">今天发生什么好玩的事情吗？<br>让我们一起撰写我们共同的日记吧。</p>
-
-    <form id="contactForm" class="contact-form" novalidate>
-      <label class="contact-label" for="contactNameInput">怎么称呼你呀？</label>
-      <input id="contactNameInput" class="contact-input" type="text" name="name" placeholder="請輸入你的名字(选填)" maxlength="40" autocomplete="name" />
-
-      <label class="contact-label" for="contactMessageInput">想說的話 想记的事</label>
-      <textarea id="contactMessageInput" class="contact-textarea" name="message" placeholder="把想說的告訴我吧" rows="5" maxlength="1000" required></textarea>
-
-      <div class="contact-actions">
-        <button id="contactSubmitBtn" class="contact-submit-btn" type="submit">提交留言</button>
-      </div>
-    </form>
-
-    <p id="contactSuccessTip" class="contact-success-tip" role="status" aria-live="polite" hidden>提交成功，審核中</p>
-  </dialog>
+  <a class="contact-bubble" href="message.html" aria-label="前往留言板">留言板</a>
 
   <button id="recommendBubble" class="recommend-bubble" type="button" aria-haspopup="dialog" aria-controls="recommendModal">
     今天听什么？

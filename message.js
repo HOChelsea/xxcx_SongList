@@ -1,6 +1,32 @@
 const elements = {
   messageList: document.getElementById("messageList"),
-  emptyState: document.getElementById("emptyState")
+  emptyState: document.getElementById("emptyState"),
+  contactBubble: document.getElementById("contactBubble"),
+  contactModal: document.getElementById("contactModal"),
+  closeContactModalBtn: document.getElementById("closeContactModalBtn"),
+  contactForm: document.getElementById("contactForm"),
+  contactNameInput: document.getElementById("contactNameInput"),
+  contactMessageInput: document.getElementById("contactMessageInput"),
+  contactSubmitBtn: document.getElementById("contactSubmitBtn"),
+  contactSuccessTip: document.getElementById("contactSuccessTip")
+};
+
+const STORAGE_KEYS = {
+  contactName: "playlist__contactName"
+};
+
+const EMAILJS_CONFIG = {
+  publicKey: "ZViuSZnR2gTJ0gblY",
+  serviceId: "service_6nz05vp",
+  templateId: "template_2fsg8kp"
+};
+
+const CONTACT_COOLDOWN_MS = 10_000;
+
+const state = {
+  contactSubmitting: false,
+  contactCooldownUntil: 0,
+  emailJsReady: false
 };
 
 const dateTimeFormatter = new Intl.DateTimeFormat("zh-CN", {
@@ -17,11 +43,160 @@ init().catch((error) => {
 });
 
 async function init() {
+  initEmailJs();
+  bindContactEvents();
+
   const messages = await fetchMessages();
   const normalizedMessages = normalizeMessages(messages);
   const sortedMessages = sortMessages(normalizedMessages);
 
   renderMessages(sortedMessages);
+}
+
+function bindContactEvents() {
+  if (!elements.contactBubble || !elements.contactModal || !elements.contactForm) {
+    return;
+  }
+
+  elements.contactBubble.addEventListener("click", openContactModal);
+
+  elements.closeContactModalBtn.addEventListener("click", () => {
+    elements.contactModal.close();
+  });
+
+  elements.contactModal.addEventListener("click", (event) => {
+    const rect = elements.contactModal.getBoundingClientRect();
+    const isOutside =
+      event.clientX < rect.left ||
+      event.clientX > rect.right ||
+      event.clientY < rect.top ||
+      event.clientY > rect.bottom;
+
+    if (isOutside) {
+      elements.contactModal.close();
+    }
+  });
+
+  elements.contactModal.addEventListener("close", hideContactSuccessTip);
+  elements.contactForm.addEventListener("submit", handleContactSubmit);
+}
+
+function initEmailJs() {
+  if (!window.emailjs || typeof window.emailjs.init !== "function") {
+    state.emailJsReady = false;
+    return;
+  }
+
+  try {
+    window.emailjs.init({
+      publicKey: EMAILJS_CONFIG.publicKey
+    });
+    state.emailJsReady = true;
+  } catch (error) {
+    state.emailJsReady = false;
+    console.warn("EmailJS init failed", error);
+  }
+}
+
+function openContactModal() {
+  hideContactSuccessTip();
+  const savedName = readTextStorage(STORAGE_KEYS.contactName, "").trim();
+  if (savedName) {
+    elements.contactNameInput.value = savedName;
+  }
+
+  elements.contactModal.showModal();
+  if (savedName) {
+    elements.contactMessageInput.focus();
+  } else {
+    elements.contactNameInput.focus();
+  }
+}
+
+async function handleContactSubmit(event) {
+  event.preventDefault();
+
+  if (state.contactSubmitting) {
+    return;
+  }
+
+  const now = Date.now();
+  if (state.contactCooldownUntil > now) {
+    const seconds = Math.ceil((state.contactCooldownUntil - now) / 1000);
+    showToast(`提交太频繁，请 ${seconds} 秒后再试`);
+    return;
+  }
+
+  const name = String(elements.contactNameInput.value || "").trim();
+  const message = String(elements.contactMessageInput.value || "").trim();
+  const submitterName = name || "匿名观众";
+
+  if (!message) {
+    showToast("请先输入想说的话");
+    elements.contactMessageInput.focus();
+    return;
+  }
+
+  if (!state.emailJsReady || !window.emailjs || typeof window.emailjs.send !== "function") {
+    showToast("邮件服务尚未配置");
+    return;
+  }
+
+  state.contactSubmitting = true;
+  elements.contactSubmitBtn.disabled = true;
+  elements.contactSubmitBtn.textContent = "提交中...";
+
+  try {
+    await window.emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, {
+      name: submitterName,
+      message,
+      page_url: window.location.href,
+      submitted_at: new Date().toISOString()
+    });
+
+    if (name) {
+      writeTextStorage(STORAGE_KEYS.contactName, name);
+    }
+    elements.contactNameInput.value = name;
+    elements.contactMessageInput.value = "";
+    state.contactCooldownUntil = Date.now() + CONTACT_COOLDOWN_MS;
+    showContactSuccessTip();
+  } catch (error) {
+    console.error("Email send failed", error);
+    showToast("提交失败，请稍后再试");
+  } finally {
+    state.contactSubmitting = false;
+    elements.contactSubmitBtn.disabled = false;
+    elements.contactSubmitBtn.textContent = "提交留言";
+  }
+}
+
+function showContactSuccessTip() {
+  const tip = elements.contactSuccessTip;
+  if (!tip) {
+    return;
+  }
+
+  tip.hidden = false;
+  tip.classList.add("show");
+  window.clearTimeout(showContactSuccessTip.timer);
+  showContactSuccessTip.timer = window.setTimeout(() => {
+    tip.classList.remove("show");
+    window.setTimeout(() => {
+      tip.hidden = true;
+    }, 220);
+  }, 2200);
+}
+
+function hideContactSuccessTip() {
+  const tip = elements.contactSuccessTip;
+  if (!tip) {
+    return;
+  }
+
+  window.clearTimeout(showContactSuccessTip.timer);
+  tip.classList.remove("show");
+  tip.hidden = true;
 }
 
 async function fetchMessages() {
@@ -142,4 +317,41 @@ function renderEmptyState(message) {
   elements.messageList.innerHTML = "";
   elements.emptyState.textContent = message;
   elements.emptyState.hidden = false;
+}
+
+function readTextStorage(key, fallback = "") {
+  try {
+    const value = localStorage.getItem(key);
+    return value === null ? fallback : String(value);
+  } catch {
+    return fallback;
+  }
+}
+
+function writeTextStorage(key, value) {
+  try {
+    localStorage.setItem(key, String(value));
+  } catch {
+    // Ignore localStorage write failures.
+  }
+}
+
+function showToast(message) {
+  let toast = document.getElementById("toast");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "toast";
+    toast.className = "toast";
+    toast.setAttribute("role", "status");
+    toast.setAttribute("aria-live", "polite");
+    document.body.appendChild(toast);
+  }
+
+  toast.textContent = String(message || "");
+  toast.classList.add("show");
+
+  window.clearTimeout(showToast.timer);
+  showToast.timer = window.setTimeout(() => {
+    toast.classList.remove("show");
+  }, 1800);
 }
