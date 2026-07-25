@@ -383,7 +383,7 @@ function renderSongTable() {
     if (isFav) {
       favBtn.classList.add("favored");
     }
-    favBtn.textContent = isFav ? "❤" : "♡";
+    favBtn.textContent = "❤";
     favBtn.setAttribute("aria-label", isFav ? "取消收藏" : "收藏歌曲");
     favBtn.addEventListener("click", () => toggleFavorite(song.id));
 

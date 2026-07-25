@@ -237,11 +237,12 @@ thead th {
 
 tbody td {
   padding: 12px 10px;
-  border-bottom: 1px dashed rgba(36, 104, 117, 0.08);
+  border-bottom: none;
   vertical-align: top;
 }
 
 .song-row {
+  border-bottom: 1px dashed rgba(36, 104, 117, 0.08);
   transition: background-color 0.26s ease;
 }
 
