@@ -130,7 +130,7 @@
     { "id": 128, "songName": "于是", "singer": "郑润泽", "tags": ["流行"] },
     { "id": 129, "songName": "月光", "singer": "胡彦斌", "tags": ["古风", "流行"] },
     { "id": 130, "songName": "云长", "singer": "戴荃", "tags": ["古风"] },
-    { "id": 131, "songName": "雪藏", "singer": ["Y-D", "呆呆破"], "tags": ["流行", "伤感", "安静", "旋律说唱"] },
+    { "id": 131, "songName": "雪藏", "singer": ["Y-D", "呆呆破"], "tags": ["流行", "伤感", "安静", "网络"] },
     { "id": 132, "songName": "天空", "singer": "王菲", "tags": ["经典", "流行"] },
     { "id": 133, "songName": "野人", "singer": "陆虎", "tags": ["流行"] },
     { "id": 134, "songName": "烂泥", "singer": "草东没有派对", "tags": ["摇滚"] },
