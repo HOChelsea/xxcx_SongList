@@ -900,3 +900,101 @@ tbody td {
   color: var(--ink);
   font-weight: 600;
 }
+
+/* ===== 评论按钮（右下角） ===== */
+.message-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+.message-comment-btn {
+  background: none;
+  border: none;
+  padding: 4px 2px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #888;
+  transition: color .15s;
+}
+.message-comment-btn:hover { color: #0a84ff; }
+
+/* ===== 内联评论表单 ===== */
+.inline-comment-form {
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.inline-comment-form[hidden] { display: none; }
+
+.inline-comment-input,
+.inline-comment-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font: inherit;
+  font-size: 14px;
+  background: #fff;
+  color: inherit;
+  resize: vertical;
+}
+.inline-comment-input:focus,
+.inline-comment-textarea:focus {
+  outline: none;
+  border-color: #0a84ff;
+}
+
+.inline-comment-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.inline-comment-submit,
+.inline-comment-cancel {
+  border: none;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: opacity .15s;
+}
+.inline-comment-submit {
+  background: #0a84ff;
+  color: #fff;
+}
+.inline-comment-submit:hover { opacity: .88; }
+.inline-comment-submit:disabled { opacity: .5; cursor: not-allowed; }
+.inline-comment-cancel {
+  background: rgba(0, 0, 0, 0.06);
+  color: #555;
+}
+.inline-comment-cancel:hover { background: rgba(0, 0, 0, 0.1); }
+
+.inline-comment-tip {
+  margin: 0;
+  font-size: 13px;
+  color: #0a84ff;
+}
+.inline-comment-tip[hidden] { display: none; }
+
+/* ===== 楼中楼 ===== */
+.message-children {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+  margin-left: 6px;
+  padding-left: 14px;
+  border-left: 2px solid rgba(0, 0, 0, 0.1);
+}
+.message-card--reply {
+  background: rgba(0, 0, 0, 0.03);
+  padding: 10px 12px;
+  border-radius: 10px;
+}
