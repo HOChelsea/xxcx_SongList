@@ -136,7 +136,7 @@
     { "id": 134, "songName": "烂泥", "singer": "草东没有派对", "tags": ["摇滚"] },
     { "id": 135, "songName": "解脱", "singer": "李玖哲", "tags": ["流行", "伤感"] },
     { "id": 136, "songName": "泪桥", "singer": "伍佰", "tags": ["摇滚", "经典"] },
-    { "id": 137, "songName": "雨天", "singer": "孙燕姿", "tags": ["流行", "伤感"] },
+    { "id": 137, "songName": "雨天", "singer": "呆呆破", "tags": ["流行", "伤感"] },
     { "id": 138, "songName": "爱如火", "singer": "那艺娜", "tags": ["流行", "网络"] },
     { "id": 139, "songName": "白垩纪", "singer": "徐秉龙", "tags": ["流行", "小甜歌"] },
     { "id": 140, "songName": "避难所", "singer": "周深", "tags": ["流行", "治愈"] },
@@ -409,7 +409,7 @@
     { "id": 407, "songName": "为你不值得", "singer": "en", "tags": ["流行", "伤感"] },
     { "id": 408, "songName": "吻的太逼真", "singer": "周杰伦", "tags": ["流行", "摇滚"] },
     { "id": 409, "songName": "我的纸飞机", "singer": "GooGoo", "tags": ["流行", "民谣"] },
-    { "id": 410, "songName": "我是一只鱼", "singer": "落日飞车", "tags": ["摇滚", "独立", "流行", "小甜歌"] },
+    { "id": 410, "songName": "我是一只鱼", "singer": "任贤齐", "tags": ["摇滚", "独立", "流行", "小甜歌"] },
     { "id": 411, "songName": "我们的明天", "singer": "鹿晗", "tags": ["流行", "励志"] },
     { "id": 412, "songName": "我们结婚吧", "singer": "金志文", "tags": ["流行", "小甜歌"] },
     { "id": 413, "songName": "想你起风时", "singer": "王靖雯", "tags": ["流行", "伤感"] },
@@ -461,7 +461,7 @@
     { "id": 459, "songName": "满目星辰皆是你", "singer": "L（桃籽）", "tags": ["流行", "古风"] },
     { "id": 460, "songName": "千秋月别西楚将", "singer": "EDIQ", "tags": ["古风"] },
     { "id": 461, "songName": "天龙八部之宿敌", "singer": "许嵩", "tags": ["古风"] },
-    { "id": 462, "songName": "我落泪情绪零散", "singer": "Mad", "tags": ["流行"] },
+    { "id": 462, "songName": "我落泪情绪零散", "singer": "周杰伦", "tags": ["流行"] },
     { "id": 463, "songName": "夏夜最后的烟火", "singer": "颜人中", "tags": ["流行"] },
     { "id": 464, "songName": "昨夜小楼又东风", "singer": "要不要买菜", "tags": ["古风"] },
     { "id": 465, "songName": "想要成为的大人", "singer": "徐紫茵", "tags": ["流行"] },
@@ -614,7 +614,8 @@
     { "id": 610, "songName": "再等冬天", "singer": "h3R3", "tags": ["流行", "抒情", "伤感", "旋律说唱"] },
     { "id": 611, "songName": "计划里", "singer": ["王子明", "WYAN王毓千"], "tags": ["流行", "伤感", "抒情", "旋律说唱", "网络"] },
     { "id": 612, "songName": "爱不单行（电视剧《海派甜心》插曲）", "singer": "罗志祥", "tags": ["流行", "抒情", "影视","治愈", "伤感"] },
-    { "id": 613, "songName": "去北极忘记你", "singer": "汤令山", "tags": ["流行", "伤感"] }
+    { "id": 613, "songName": "可乐", "singer": "赵紫骅", "tags": ["流行", "抒情", "伤感", "安静"] },
+    { "id": 614, "songName": "去北极忘记你", "singer": "汤令山", "tags": ["流行", "伤感"] }
 
     
 
