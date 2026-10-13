@@ -407,7 +407,7 @@
     { "id": 405, "songName": "算什么男人", "singer": "周杰伦", "tags": ["流行", "伤感"] },
     { "id": 406, "songName": "突然好想你", "singer": "五月天", "tags": ["摇滚", "经典", "伤感"] },
     { "id": 407, "songName": "为你不值得", "singer": "en", "tags": ["流行", "伤感"] },
-    { "id": 408, "songName": "吻的太逼真", "singer": "周杰伦", "tags": ["流行", "摇滚"] },
+    { "id": 408, "songName": "吻的太逼真", "singer": "张敬轩", "tags": ["流行", "摇滚"] },
     { "id": 409, "songName": "我的纸飞机", "singer": "GooGoo", "tags": ["流行", "民谣"] },
     { "id": 410, "songName": "我是一只鱼", "singer": "任贤齐", "tags": ["摇滚", "独立", "流行", "小甜歌"] },
     { "id": 411, "songName": "我们的明天", "singer": "鹿晗", "tags": ["流行", "励志"] },
