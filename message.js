@@ -11,6 +11,7 @@ const elements = {
   contactSuccessTip: document.getElementById("contactSuccessTip")
 };
 
+
 const STORAGE_KEYS = {
   contactName: "playlist__contactName"
 };
