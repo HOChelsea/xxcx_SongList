@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    { "type": "song", "value": "无赖（戴佩妮版本）", "note": "无敌了" },
+    { "type": "song", "value": "纤维", "note": "简直仙籁" },
+    { "type": "song", "value": "独上C楼", "note": "cccc" },
+    { "type": "song", "value": "Simon (周菲戈版本)", "note": "真的火锅" },
+    { "type": "song", "value": "衣柜歌手", "note": "鱿鱼之歌" },
+    { "type": "song", "value": "b级鲨鱼", "note": "bbbbb" },
+    { "type": "singer", "value": "周杰伦" },
+    { "type": "singer", "value": "王心凌" },
+    { "type": "singer", "value": "林俊杰" },
+    { "type": "singer", "value": "许嵩" }
+  ]
+}

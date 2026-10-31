@@ -25,7 +25,12 @@
   <script defer src="app.js"></script>
 </head>
 <body>
+  <span id="top" aria-hidden="true"></span>
   <div class="background-grid" aria-hidden="true"></div>
+  <nav class="site-nav" aria-label="主要導覽">
+    <a class="site-nav-link active" href="#top" aria-current="page">歌單</a>
+    <a class="site-nav-link" href="message.html">留言板</a>
+  </nav>
 
   <main class="page">
     <section class="profile-card">
@@ -49,9 +54,14 @@
             <button id="listModeBtn" class="mode-btn active" type="button" aria-pressed="true">列表模式</button>
             <button id="galleryModeBtn" class="mode-btn" type="button" aria-pressed="false">简略模式</button>
           </div>
+          <div class="view-mode-switch sort-mode-switch" role="group" aria-label="歌单排序方式">
+            <button id="sortSongBtn" class="mode-btn active" type="button" aria-pressed="true">按歌名排序</button>
+            <button id="sortSingerBtn" class="mode-btn" type="button" aria-pressed="false">按歌手排序</button>
+          </div>
         </div>
         <div class="search-wrap">
-          <input id="searchInput" type="search" placeholder="搜索歌名 / 歌手 / 标签（支持多关键词）" aria-label="搜索歌曲" />
+          <input id="searchInput" type="search" placeholder="搜索歌名 / 歌手 / 标签（支持多关键词）" aria-label="搜索歌曲" aria-controls="searchRecommendations" aria-expanded="false" autocomplete="off" />
+          <div id="searchRecommendations" class="search-recommendations" aria-label="搜索推荐" hidden></div>
         </div>
       </div>
 
@@ -60,12 +70,7 @@
       <div class="table-wrap" id="tableWrap">
         <table aria-label="歌单表格">
           <thead>
-            <tr>
-              <th>歌手</th>
-              <th>歌名</th>
-              <th>标签</th>
-              <th>收藏</th>
-            </tr>
+            <tr id="songTableHeader"></tr>
           </thead>
           <tbody id="songTableBody"></tbody>
         </table>
@@ -78,8 +83,6 @@
   </main>
 
   <aside id="alphaNav" class="alpha-nav" aria-label="歌手首字母导航"></aside>
-
-  <a class="contact-bubble" href="message.html" aria-label="前往留言板">留言板</a>
 
   <button id="recommendBubble" class="recommend-bubble" type="button" aria-haspopup="dialog" aria-controls="recommendModal">
     今天听什么？

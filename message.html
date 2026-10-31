@@ -25,7 +25,12 @@
 	<script defer src="message.js"></script>
 </head>
 <body>
+	<span id="top" aria-hidden="true"></span>
 	<div class="background-grid" aria-hidden="true"></div>
+	<nav class="site-nav" aria-label="主要導覽">
+		<a class="site-nav-link" href="index.html">歌單</a>
+		<a class="site-nav-link active" href="#top" aria-current="page">留言板</a>
+	</nav>
 
 	<main class="page">
 		<section class="profile-card">
@@ -81,8 +86,5 @@
 
     <p id="contactSuccessTip" class="contact-success-tip" role="status" aria-live="polite" hidden>提交成功，審核中</p>
   </dialog>
-
-
-	<a class="home-bubble" href="index.html" aria-label="返回主页">返回主页</a>
 </body>
 </html>
