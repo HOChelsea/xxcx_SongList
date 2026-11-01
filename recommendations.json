@@ -6,9 +6,7 @@
     { "type": "song", "value": "Simon (周菲戈版本)", "note": "真的火锅" },
     { "type": "song", "value": "衣柜歌手", "note": "鱿鱼之歌" },
     { "type": "song", "value": "b级鲨鱼", "note": "bbbbb" },
-    { "type": "singer", "value": "周杰伦" },
-    { "type": "singer", "value": "王心凌" },
-    { "type": "singer", "value": "林俊杰" },
-    { "type": "singer", "value": "许嵩" }
+    { "type": "singer", "value": "裘德" },
+    { "type": "singer", "value": "郑润泽" }
   ]
 }
