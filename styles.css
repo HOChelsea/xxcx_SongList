@@ -534,12 +534,24 @@ tbody td {
   box-shadow: 0 12px 28px rgba(36, 104, 117, 0.08);
 }
 
+.message-card--pinned {
+  border-color: rgba(36, 104, 117, 0.42);
+  box-shadow: 0 12px 28px rgba(36, 104, 117, 0.14);
+}
+
 .message-card-header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 10px;
+}
+
+.message-author {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .message-name,
@@ -551,6 +563,15 @@ tbody td {
 .message-name {
   font-family: "Space Grotesk", "Noto Sans SC", sans-serif;
   font-size: 1rem;
+  font-weight: 700;
+}
+
+.message-pinned-label {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--accent-2);
+  color: #fff;
+  font-size: 0.75rem;
   font-weight: 700;
 }
 

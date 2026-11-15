@@ -232,6 +232,7 @@ function normalizeMessages(records) {
 
       return {
         id, name, message, submittedAt,
+        pinned: submission.pinned === true,
         timestamp: Number.isNaN(timestamp) ? null : timestamp,
         originalIndex: index,
         comments
@@ -251,7 +252,10 @@ function compareByTime(a, b, direction) {
 }
 
 function sortSubmissions(list) {
-  list.sort((a, b) => compareByTime(a, b, "desc"));       // 主楼：新 → 旧
+  list.sort((a, b) => {
+    if (a.pinned !== b.pinned) return a.pinned ? -1 : 1;
+    return compareByTime(a, b, "desc");
+  });
   list.forEach((item) => {
     item.comments.sort((a, b) => compareByTime(a, b, "asc")); // 楼中楼：旧 → 新
   });
@@ -277,22 +281,34 @@ function renderMessages(list) {
 function createSubmissionCard(submission) {
   const article = document.createElement("article");
   article.className = "message-card";
+  if (submission.pinned) article.classList.add("message-card--pinned");
   if (submission.id !== null) article.id = `message-${submission.id}`;
 
   // header
   const header = document.createElement("header");
   header.className = "message-card-header";
 
+  const author = document.createElement("div");
+  author.className = "message-author";
+
   const name = document.createElement("p");
   name.className = "message-name";
   name.textContent = submission.name;
+
+  author.appendChild(name);
+  if (submission.pinned) {
+    const pinnedLabel = document.createElement("span");
+    pinnedLabel.className = "message-pinned-label";
+    pinnedLabel.textContent = "置顶";
+    author.appendChild(pinnedLabel);
+  }
 
   const time = document.createElement("time");
   time.className = "message-time";
   time.dateTime = submission.submittedAt;
   time.textContent = formatTimestamp(submission.timestamp);
 
-  header.appendChild(name);
+  header.appendChild(author);
   header.appendChild(time);
 
   // body
