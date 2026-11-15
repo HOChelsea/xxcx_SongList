@@ -572,7 +572,23 @@
     "id": 26,
     "name": "正版小抽象",
     "message": "爱你们",
-    "submitted_at": "2026-11-15T20:21:11.283Z"
+    "submitted_at": "2026-11-15T20:21:11.283Z",
+    "comment": [
+      {
+        "id": 2601,
+        "parent_id": "26",
+        "name": "咪",
+        "message": "谢谢",
+        "submitted_at": "2026-11-15T20:23:34.472Z"
+      },
+      {
+        "id": 2602,
+        "parent_id": "26",
+        "name": "瑞幸",
+        "message": "呼。。我的荣幸。。",
+        "submitted_at": "2026-11-15T20:24:34.472Z"
+      }
+    ]
   }
 }
 
